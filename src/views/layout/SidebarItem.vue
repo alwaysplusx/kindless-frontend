@@ -1,46 +1,48 @@
 <template>
   <div>
-    <template v-for="item in routes">
-      <router-link v-if="!item.hidden&&item.noDropdown&&item.children.length>0" :to="item.path+'/'+item.children[0].path">
-        <el-menu-item :index="item.path+'/'+item.children[0].path">
-          <wscn-icon-svg v-if='item.icon' :icon-class="item.icon" /> {{item.children[0].name}}
-        </el-menu-item>
-      </router-link>
-      <el-submenu :index="item.name" v-if="!item.noDropdown&&!item.hidden">
+    <div v-for="item in menus" :key="item.id">
+      <el-submenu :index="item.path" v-if="!item.hidden">
         <template slot="title">
-          <wscn-icon-svg v-if='item.icon' :icon-class="item.icon" /> {{item.name}}
+          <i v-if="item.icon" :class="item.icon" aria-hidden="true"></i> {{item.name}}
         </template>
-        <template v-for="child in item.children" v-if='!child.hidden'>
-          <sidebar-item class='menu-indent' v-if='child.children&&child.children.length>0' :routes='[child]'> </sidebar-item>
-          <router-link v-else class="menu-indent" :to="item.path+'/'+child.path">
-            <el-menu-item :index="item.path+'/'+child.path">
-              {{child.name}}
-            </el-menu-item>
-          </router-link>
-        </template>
+  
+        <div v-for="child in item.children" v-if="!child.hidden" :key="child.id">
+          <div v-if="child.group && child.children && child.children.length > 0">
+            <el-menu-item-group>
+              <template slot="title">
+                <i v-if="child.icon" :class="child.icon" aria-hidden="true"></i> {{child.name}}
+              </template>
+              <div v-for="cc in child" :key="cc.id">
+                <sidebar-item v-if="cc.children && cc.children.length > 0" :menus="cc.children" class="menu-indent"></sidebar-item>
+                <!--<el-menu-item :index="cc.path" class="menu-indent">AAA</el-menu-item>-->
+              </div>
+            </el-menu-item-group>
+          </div>
+          <div v-else>
+            <sidebar-item v-if="child.children && child.children.length > 0" :menus="[child]" class="menu-indent"></sidebar-item>
+            <el-menu-item v-else :index="child.path" class="menu-indent">{{child.name}}</el-menu-item>
+          </div>
+  
+        </div>
       </el-submenu>
-    </template>
+    </div>
   </div>
 </template>
 
 <script>
-
-  export default {
-    name: 'SidebarItem',
-    props: {
-      routes: {
-        type: Array
-      }
+export default {
+  name: 'SidebarItem',
+  props: {
+    menus: {
+      type: Array
     }
   }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .wscn-icon {
-    margin-right: 10px;
-  }
-  .hideSidebar .menu-indent {
-    display: block;
-    text-indent: 10px;
-  }
+.menu-indent {
+  display: block;
+  text-indent: 10px;
+}
 </style>

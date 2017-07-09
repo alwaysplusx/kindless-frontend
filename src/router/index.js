@@ -1,18 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import User from '@/components/User'
+// import Hello from '@/views/demo/Hello'
+import User from '@/views/demo/User'
+import Layout from '@/views/layout/Layout'
+import Login from '@/views/login'
 
 Vue.use(Router)
 
+const routes = [{
+  path: '/',
+  // redirect: '/user',
+  name: 'layout',
+  component: Layout
+}, {
+  path: '/login',
+  name: 'login',
+  component: Login
+}, {
+  path: '/user',
+  name: 'user',
+  component: User
+}, {
+  path: '/test/user',
+  name: 'test',
+  component: User
+}]
+
 export default new Router({
-  routes: [{
-    path: '/',
-    name: 'Hello',
-    component: Hello
-  }, {
-    path: '/user',
-    name: 'User',
-    component: User
-  }]
+  // mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
+  routes
 })
