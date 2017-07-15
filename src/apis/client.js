@@ -13,11 +13,14 @@ client.interceptors.request.use(request => {
   console.error(error)
 })
 
-// client.interceptors.response.use(
-//   response => response,
-//   error => {
-//     console.error(error)
-//   }
-// )
+client.interceptors.response.use(
+  response => {
+    return response.data
+  },
+  error => {
+    console.error(error)
+    return Promise.reject(error)
+  }
+)
 
 export default client

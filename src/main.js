@@ -7,7 +7,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import NProgress from 'nprogress'
 import 'element-ui/lib/theme-default/index.css'
-import 'font-awesome/css/font-awesome.css'
+import 'material-icons/css/material-icons.css'
+import 'font-awesome/scss/font-awesome.scss'
 import 'nprogress/nprogress.css'
 
 Vue.config.productionTip = false

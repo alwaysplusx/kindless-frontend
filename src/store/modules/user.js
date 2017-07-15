@@ -19,6 +19,7 @@ const user = {
         $.login(data.username, data.password)
           .then(response => {
             commit('SET_TOKEN', data.token)
+            resolve()
           })
           .catch(error => {
             reject(error)

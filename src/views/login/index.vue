@@ -24,14 +24,13 @@
 </template>
 
 <script>
-  import $ from '@/apis'
 
   export default {
     name: 'login',
     data () {
       return {
         loginForm: {
-          username: 'admin@domain.com',
+          username: 'wuxii',
           password: ''
         },
         loginRules: {
@@ -67,14 +66,13 @@
         this.$refs.loginForm.validate(valid => {
           if (valid) {
             this.loading = true
-            $.login(this.loginForm.username, this.loginForm.password)
+            this.$store.dispatch('login', this.loginForm)
             .then(() => {
-              console.log('>>>>>>>>>>>')
               this.loading = false
+              this.$router.push({ path: '/' })
             })
             .catch(error => {
-              this.loading = false
-              this.$message.error(error)
+              console.error(error)
             })
           } else {
             return false
@@ -92,7 +90,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  @import "src/styles/mixin.scss";
+
   body {
     margin: 0px;
   }
@@ -104,11 +102,10 @@
   }
 
   .login-container {
-    @include relative;
     height: 100vh;
     background-color: #2d3a4b;
     input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
+      box-shadow: 0 0 0px 1000px #293444 inset !important;
       -webkit-text-fill-color: #fff !important;
     }
     input {
@@ -150,9 +147,6 @@
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       color: #454545;
-    }
-    .forget-pwd {
-      color: #fff;
     }
   }
 </style>

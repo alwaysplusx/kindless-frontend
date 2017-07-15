@@ -1,10 +1,13 @@
 import client from './client'
+import user from './user'
 
 const login = (username, password) => {
-  return client.post('/signin', {
+  const result = client.post('/signin', {
     username: username,
     password: password
   })
+  console.log(result)
+  return result
 }
 
 const logout = () => {
@@ -14,4 +17,4 @@ const logout = () => {
   })
 }
 
-export default { login, logout }
+export default { login, logout, user }

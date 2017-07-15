@@ -1,5 +1,5 @@
 <template>
-  <el-menu mode="vertical" theme="dark" :default-active="$route.path" router>
+  <el-menu mode="vertical" :default-active="$route.path" router>
     <sidebar-item :menus='menus'></sidebar-item>
   </el-menu>
 </template>
@@ -14,49 +14,49 @@
     },
     data () {
       return {
-        menus: [{
-          path: '/home',
-          name: 'Home',
-          icon: 'el-icon-setting'
-        }, {
-          path: '/user',
-          name: 'User',
-          icon: 'el-icon-information',
-          children: [
-            { path: '/user', name: 'User Second' },
-            { path: '/user/third', name: 'User Thrid' },
-            { path: '/user/fourth', name: 'User Fourth' }
-          ]
-        }, {
-          path: '/example',
-          name: 'Example',
-          icon: 'el-icon-menu',
-          children: [
-            {
-              path: '/ga',
-              group: true,
-              name: 'Group A',
-              icon: 'fa fa-paper-plane',
-              children: [
-                { path: '/example/ga/1', name: 'Gropu A Table' },
-                { path: '/example/ga/2', name: 'Gropu A Grid' }
-              ]
-            },
-            {
-              path: '/gb',
-              group: true,
-              name: 'Group B',
-              icon: 'fa fa-paper-plane-o',
-              children: [
-                { path: '/example/gb/1', name: 'Gropu B Table' },
-                { path: '/example/gb/2', name: 'Gropu B Grid' }
-              ]
-            },
-            { path: '/example/second', name: 'Second' },
-            { path: '/example/third', name: 'Thrid' },
-            { path: '/example/fourth', name: 'Fourth' }
-          ]
-        }]
+        menus: [
+          { path: '/', name: 'Dashborder', icon: 'el-icon-setting' },
+          {
+            path: '/user',
+            name: '系统管理',
+            icon: 'el-icon-menu',
+            children: [
+              { path: '/user', icon: 'fa fa-user-circle', name: '用户管理' },
+              { path: '/role', name: '角色管理' },
+              { path: '/permission', name: '权限管理' },
+              { path: '/menu', name: '菜单管理' }
+            ]
+          },
+          {
+            path: '/oauth',
+            name: '授权管理',
+            icon: 'el-icon-message',
+            children: [
+              {
+                path: '/oauth/client',
+                name: '客户端',
+                children: [
+                  { path: '/oauth/client/pc', name: 'PC端' },
+                  { path: '/oauth/client/phone', name: '手机客户端' }
+                ]
+              },
+              { path: '/oauth/access_token', name: '授权码' },
+              { path: '/oauth/code', name: '临时授权码' },
+              { path: '/oauth/jwt', name: 'Json Web Token' }
+            ]
+          },
+          {
+            path: '/example',
+            name: '系统演示',
+            icon: 'el-icon-information',
+            children: [
+              { path: '/example/first', name: '演示一' },
+              { path: '/example/second', name: '演示二' },
+              { path: '/example/third', name: '演示三' },
+              { path: '/example/fouth', name: '演示四' },
+              { path: '/example/fiveth', name: '演示五' }
+            ]
+          }]
       }
     }
   }

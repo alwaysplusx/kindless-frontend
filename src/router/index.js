@@ -1,29 +1,34 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/views/demo/Hello'
-import User from '@/views/demo/User'
 import Layout from '@/views/layout/Layout'
 import Login from '@/views/login'
+
+import Dashboard from '@/views/dashboard'
+
+import User from '@/views/user'
+import Role from '@/views/demo/Role'
+import Permission from '@/views/demo/Permission'
+import Menu from '@/views/demo/Menu'
 
 Vue.use(Router)
 
 const routes = [{
+  name: '首页',
   path: '/',
-  // redirect: '/user',
-  name: 'layout',
-  component: Layout
+  component: Layout,
+  redirect: '/dashboard',
+  children: [
+    {path: 'dashboard', component: Dashboard},
+    {path: 'user', component: User},
+    {path: 'role', component: Role},
+    {path: 'permission', component: Permission},
+    {path: 'menu', component: Menu}
+  ]
 }, {
   path: '/login',
   name: 'login',
+  hidden: true,
   component: Login
-}, {
-  path: '/user',
-  name: 'user',
-  component: User
-}, {
-  path: '/test/user',
-  name: 'test',
-  component: User
 }]
 
 export default new Router({
