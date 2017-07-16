@@ -62,7 +62,6 @@
     },
     methods: {
       login () {
-        // TODO login
         this.$refs.loginForm.validate(valid => {
           if (valid) {
             this.loading = true
@@ -72,10 +71,9 @@
               this.$router.push({ path: '/' })
             })
             .catch(error => {
+              this.loading = false
               console.error(error)
             })
-          } else {
-            return false
           }
         })
       }

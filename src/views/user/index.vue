@@ -13,9 +13,10 @@
     </el-table>
     <div class="block">
       <el-pagination 
-        layout="prev, pager, next" 
-        :page-size="data.size" 
-        :total="data.total">
+        layout="prev, pager, next, jumper, ->, total" 
+        :page-size="data.size"
+        :total="data.total"
+        @current-change="fetchData">
       </el-pagination>
     </div>
   </div>
@@ -37,23 +38,22 @@
       }
     },
     created () {
-      this.getUsers()
+      this.fetchData()
     },
     methods: {
-      getUsers () {
+      fetchData (page) {
+        console.log('fetch page ' + page + ' datas')
         this.loading = true
-        $.user.page()
+        $.user.page({
+          page: page
+        })
         .then((response) => {
           this.data = response
           this.loading = false
         })
         .catch(error => {
-          this.$message({
-            message: '数据加载失败',
-            type: 'error'
-          })
-          console.log(error)
           this.loading = false
+          console.error(error)
         })
       }
     }

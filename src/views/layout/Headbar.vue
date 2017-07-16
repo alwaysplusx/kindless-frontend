@@ -6,11 +6,9 @@
         Settings <i class="el-icon-caret-bottom el-icon--right"></i>
       </el-button>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>黄金糕</el-dropdown-item>
-        <el-dropdown-item>狮子头</el-dropdown-item>
-        <el-dropdown-item>螺蛳粉</el-dropdown-item>
-        <el-dropdown-item>双皮奶</el-dropdown-item>
-        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+        <el-dropdown-item>我的资料</el-dropdown-item>
+        <el-dropdown-item>系统设置</el-dropdown-item>        
+        <el-dropdown-item divided>退出</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
 

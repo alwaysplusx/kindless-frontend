@@ -15,9 +15,26 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 
+const whiteList = ['/login']
+
+const isAccessPath = (path) => {
+  return whiteList.indexOf(path) !== -1 || store.getters.authorized
+}
+
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  next()
+
+  if (isAccessPath(to.path)) {
+    console.log('access path')
+    next()
+  } else if (to.path !== '/login') {
+    console.log('not authorized to login')
+    next('/login')
+    NProgress.done()
+  } else {
+    console.log('other')
+    next()
+  }
 })
 
 router.afterEach(() => {

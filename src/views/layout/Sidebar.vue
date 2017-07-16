@@ -15,7 +15,7 @@
     data () {
       return {
         menus: [
-          { path: '/', name: 'Dashborder', icon: 'el-icon-setting' },
+          { path: '/', name: 'Dashboard', icon: 'el-icon-setting' },
           {
             path: '/user',
             name: '系统管理',

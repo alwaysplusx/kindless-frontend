@@ -1,9 +1,10 @@
 import client from './client'
 
-const page = () => {
+const page = (params) => {
   return client({
     url: '/user/page',
-    method: 'get'
+    method: 'get',
+    params
   })
 }
 
