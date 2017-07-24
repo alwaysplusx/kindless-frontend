@@ -8,4 +8,28 @@ const page = (params) => {
   })
 }
 
-export default { page }
+const create = (user) => {
+  return client({
+    url: '/user/create',
+    method: 'post',
+    data: user
+  })
+}
+
+const remove = (names) => {
+  return client({
+    url: '/user/delete',
+    method: 'post',
+    data: names
+  })
+}
+
+const update = (user) => {
+  return client({
+    url: '/user/update',
+    method: 'post',
+    data: user
+  })
+}
+
+export default { page, create, remove, update }

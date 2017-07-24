@@ -1,9 +1,9 @@
 <template>
-  <section class="app-main" style="min-height: 100%">
+  <div class="main-container">
     <transition name="fade" mode="out-in">
       <router-view :key="key"></router-view>
     </transition>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -16,3 +16,10 @@
     }
   }
 </script>
+
+<style>
+  .main-container {
+    min-height: 100%;
+    margin: 20px;
+  }
+</style>

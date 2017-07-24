@@ -6,9 +6,9 @@ import Login from '@/views/login'
 import Dashboard from '@/views/dashboard'
 
 import User from '@/views/user'
+import Menu from '@/views/menu'
 import Role from '@/views/demo/Role'
 import Permission from '@/views/demo/Permission'
-import Menu from '@/views/demo/Menu'
 
 Vue.use(Router)
 

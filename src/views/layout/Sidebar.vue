@@ -1,7 +1,9 @@
 <template>
-  <el-menu mode="vertical" :default-active="$route.path" router>
-    <sidebar-item :menus='menus'></sidebar-item>
-  </el-menu>
+  <div class="sidebar-container">
+    <el-menu mode="vertical" :default-active="$route.path" router>
+      <sidebar-item :menus='menus'></sidebar-item>
+    </el-menu>
+  </div>
 </template>
 
 <script>
@@ -65,5 +67,14 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .el-menu {
     min-height: 100%;
+  }
+  .sidebar-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -17px;
+    overflow-y: scroll;
+    transition: all .28s ease-out;
   }
 </style>
