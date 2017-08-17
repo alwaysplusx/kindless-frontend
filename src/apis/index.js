@@ -1,8 +1,10 @@
 import client from './client'
 import user from './user'
+import menu from './menu'
+import permission from './permission'
 
 const login = (username, password) => {
-  const result = client.post('/signin', {
+  const result = client.post('/login', {
     username: username,
     password: password
   })
@@ -11,9 +13,9 @@ const login = (username, password) => {
 
 const logout = () => {
   return client({
-    url: '/signout',
+    url: '/logout',
     method: 'get'
   })
 }
 
-export default { login, logout, user }
+export default { login, logout, user, menu, permission }

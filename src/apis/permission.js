@@ -1,8 +1,8 @@
 import client from './client'
 
-const getPage = (params) => {
+const getList = (params) => {
   return client({
-    url: '/user/page',
+    url: '/permission/list',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ const getPage = (params) => {
 
 const create = (user) => {
   return client({
-    url: '/user/create',
+    url: '/permission/create',
     method: 'post',
     data: user
   })
@@ -18,7 +18,7 @@ const create = (user) => {
 
 const remove = (names) => {
   return client({
-    url: '/user/delete',
+    url: '/permission/delete',
     method: 'post',
     data: names
   })
@@ -26,10 +26,10 @@ const remove = (names) => {
 
 const update = (user) => {
   return client({
-    url: '/user/update',
+    url: '/permission/update',
     method: 'post',
     data: user
   })
 }
 
-export default { getPage, create, remove, update }
+export default { getList, create, remove, update }

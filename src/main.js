@@ -25,14 +25,11 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
 
   if (isAccessPath(to.path)) {
-    console.log('access path')
     next()
   } else if (to.path !== '/login') {
-    console.log('not authorized to login')
     next('/login')
     NProgress.done()
   } else {
-    console.log('other')
     next()
   }
 })
