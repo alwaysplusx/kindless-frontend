@@ -66,13 +66,22 @@
           if (valid) {
             this.loading = true
             this.$store.dispatch('login', this.loginForm)
-            .then(() => {
+            .then((data) => {
               this.loading = false
-              console.log(this.$store)
+              if (data.error_code) {
+                this.$message({
+                  type: 'error',
+                  message: '[' + data.error_code + ']' + data.error
+                })
+              }
               this.$router.push({ path: '/' })
             })
             .catch(error => {
               this.loading = false
+              this.$message({
+                type: 'error',
+                message: error.message || '网络异常'
+              })
               console.error(error)
             })
           }

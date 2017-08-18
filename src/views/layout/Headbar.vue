@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import $ from '@/apis'
+
 export default {
   data () {
     return {
@@ -32,7 +34,10 @@ export default {
   },
   methods: {
     logout () {
-      console.log('>>>> logout')
+      $.logout()
+      .then(resp => {
+        this.$router.push({ path: '/login' })
+      })
     },
     toggle () {
       console.log('>>>> toggle')

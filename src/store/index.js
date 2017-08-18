@@ -32,7 +32,7 @@ const actions = {
       $.login(data.username, data.password)
         .then(response => {
           commit('setToken', response.token)
-          resolve()
+          resolve(response)
         })
         .catch(error => {
           console.log('response failure')
