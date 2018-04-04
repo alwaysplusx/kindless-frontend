@@ -22,7 +22,11 @@ const getters = {
 const mutations = {
   setToken: (state, token) => {
     state.token = token
-    Cookies.set('Kindless-Token', token)
+    if (token) {
+      Cookies.set('Kindless-Token', token)
+    } else {
+      Cookies.remove('Kindless-Token')
+    }
   }
 }
 
@@ -33,6 +37,19 @@ const actions = {
         .then(response => {
           commit('setToken', response.token)
           resolve(response)
+        })
+        .catch(error => {
+          console.log('response failure')
+          reject(error)
+        })
+    })
+  },
+  logout: function ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      $.logout()
+        .then(response => {
+          commit('setToken', null)
+          resolve()
         })
         .catch(error => {
           console.log('response failure')

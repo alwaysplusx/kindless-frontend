@@ -4,11 +4,10 @@ import menu from './menu'
 import permission from './permission'
 
 const login = (username, password) => {
-  const result = client.post('/login', {
-    username: username,
-    password: password
-  })
-  return result
+  var params = new URLSearchParams()
+  params.append('username', username)
+  params.append('password', password)
+  return client.post('/login', params)
 }
 
 const logout = () => {
